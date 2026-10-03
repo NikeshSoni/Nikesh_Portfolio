@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 44%;
+    --border: 214.3 31.8% 90%;
+    --input: 214.3 31.8% 90%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --link: 262 83% 58%;
+    --ring: 262 83% 58%;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --background: 240 10% 4.5%;
+    --foreground: 240 10% 98%;
+    --card: 240 7% 7.5%;
+    --card-foreground: 240 10% 98%;
+    --muted: 240 5% 12%;
+    --muted-foreground: 240 5% 65%;
+    --border: 240 5% 15%;
+    --input: 240 5% 18%;
+    --primary: 263 70% 66%;
+    --primary-foreground: 0 0% 100%;
+    --link: 263 80% 75%;
+    --ring: 263 70% 66%;
+  }
+
+  html {
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased transition-colors duration-300;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading tracking-tight;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+.bg-grid-pattern {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(120, 119, 198, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 119, 198, 0.08) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Custom glowing text utilities */
+.text-gradient {
+  @apply bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 bg-clip-text text-transparent dark:from-purple-400 dark:via-indigo-300 dark:to-pink-400;
+}
+
+.text-gradient-primary {
+  @apply bg-gradient-to-r from-primary via-indigo-500 to-purple-500 bg-clip-text text-transparent;
+}
